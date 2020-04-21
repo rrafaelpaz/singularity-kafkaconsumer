@@ -22,7 +22,9 @@ public class UserConsumer {
                     groupId = "group-consumer-user",
                     containerFactory = "kafkaListenerContainerFactory")
     public void userConsumer(String input){
+        System.out.println("entered userConsumer method");
         User user = parseJson(input);
+        System.out.println("parsed input");
         createUser(user);
         System.out.println("committed into DynamoDB");
     }
