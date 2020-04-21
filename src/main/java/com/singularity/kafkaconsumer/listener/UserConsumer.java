@@ -20,7 +20,7 @@ public class UserConsumer {
 
     @KafkaListener(topics = "user-topic-final-data",
                     groupId = "group-consumer-user",
-                    containerFactory = "userKafkaListenerFactory")
+                    containerFactory = "kafkaListenerContainerFactory")
     public void userConsumer(String input){
         User user = parseJson(input);
         createUser(user);
