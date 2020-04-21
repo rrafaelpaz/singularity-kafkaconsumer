@@ -28,7 +28,7 @@ public class KafkaConfiguration {
         Map<String, Object> config = new HashMap<>();
 
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "34.87.233.5:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group-consumer-user");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 

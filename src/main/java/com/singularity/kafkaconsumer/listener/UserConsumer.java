@@ -19,7 +19,7 @@ public class UserConsumer {
                     containerFactory = "userKafkaListenerFactory")
     public void userConsumer(User user){
         createUser(user);
-        System.out.println(user);
+        System.out.println("committed into DynamoDB");
     }
 
     private void createUser(User user) {
