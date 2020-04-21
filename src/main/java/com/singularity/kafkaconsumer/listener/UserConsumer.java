@@ -3,10 +3,14 @@ package com.singularity.kafkaconsumer.listener;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.singularity.kafkaconsumer.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 
 @Service
 public class UserConsumer {
@@ -17,9 +21,23 @@ public class UserConsumer {
     @KafkaListener(topics = "user-topic-final-data",
                     groupId = "group-consumer-user",
                     containerFactory = "userKafkaListenerFactory")
-    public void userConsumer(User user){
+    public void userConsumer(String input){
+        User user = parseJson(input);
         createUser(user);
         System.out.println("committed into DynamoDB");
+    }
+
+    private User parseJson(String  json){
+        ObjectMapper mapper = new ObjectMapper();
+        User user = null;
+        try {
+            user = mapper.readValue(json, User.class);
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     private void createUser(User user) {
