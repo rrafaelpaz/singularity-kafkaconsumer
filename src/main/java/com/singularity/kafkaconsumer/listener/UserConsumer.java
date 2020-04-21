@@ -24,7 +24,7 @@ public class UserConsumer {
     public void userConsumer(String input){
         System.out.println("entered userConsumer method");
         User user = parseJson(input);
-        System.out.println("parsed input");
+        System.out.println(user);
         createUser(user);
         System.out.println("committed into DynamoDB");
     }
