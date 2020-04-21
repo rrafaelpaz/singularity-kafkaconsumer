@@ -31,6 +31,14 @@ public class User {
         this.nickName = nickName;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public User(){}
 
     public String getName() {
