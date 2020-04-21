@@ -15,7 +15,7 @@ public class DynamoDBConfig {
     public DynamoDBMapper dynamoDBMapper() {
 
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
-                //.withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("AKIA27QG4B5C2C4TLLU5", "tWk9oMVkSrUU6PSxC0ULgi1vLKwcePYgJhNdLS5o")))
+                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("AKIA27QG4B5C2C4TLLU5", "tWk9oMVkSrUU6PSxC0ULgi1vLKwcePYgJhNdLS5o")))
                 .withRegion(Regions.AP_SOUTHEAST_2)
                 .build();
         return new DynamoDBMapper(client, DynamoDBMapperConfig.DEFAULT);
