@@ -1,7 +1,5 @@
 package com.singularity.kafkaconsumer.config;
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
@@ -17,7 +15,6 @@ public class DynamoDBConfig {
     public DynamoDBMapper dynamoDBMapper() {
 
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("AKIA27QG4B5C2C4TLLU5", "tWk9oMVkSrUU6PSxC0ULgi1vLKwcePYgJhNdLS5o")))
                 .withRegion(Regions.AP_SOUTHEAST_2)
                 .build();
         return new DynamoDBMapper(client, DynamoDBMapperConfig.DEFAULT);
